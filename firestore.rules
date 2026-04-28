@@ -1,0 +1,51 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    // Catch-all deny
+    match /{document=**} {
+      allow read, write: if false;
+    }
+
+    // Primitive Helpers
+    function isSignedIn() { return request.auth != null; }
+    function isOwner(uid) { return isSignedIn() && request.auth.uid == uid; }
+    function existing() { return resource.data; }
+    function incoming() { return request.resource.data; }
+    function isValidId(id) { return id is string && id.size() <= 128 && id.matches('^[a-zA-Z0-9_\\-]+$'); }
+
+    match /users/{userId} {
+      function isValidUser(data) {
+        return data.size() >= 1
+            && (!('email' in data) || data.email is string)
+            && (!('name' in data) || data.name is string)
+            && ('role' in data && data.role is string);
+      }
+
+      // Users can read own data, admins can read all
+      allow get: if isOwner(userId);
+      allow list: if false; // No blanket listing of users for now
+
+      // Users can create/update only their own document
+      allow create: if isOwner(userId) && isValidUser(incoming());
+      allow update: if isOwner(userId) && isValidUser(incoming()) && incoming().diff(existing()).affectedKeys().hasOnly(['email', 'name', 'role']);
+    }
+
+    match /assets/{assetId} {
+      function isValidAsset(data) {
+        return data.size() >= 4
+            && data.name is string && data.name.size() > 0 && data.name.size() <= 200
+            && data.price is number
+            && data.image is string
+            && data.category is string;
+      }
+
+      // Anyone can read listing
+      allow get, list: if true; 
+
+      // Allow authorized users to manage Prime Assets catalog.
+      allow create, update: if isSignedIn();
+      
+      allow delete: if false; // Not editable currently
+    }
+  }
+}

@@ -1,0 +1,27 @@
+@import "tailwindcss";
+
+@theme {
+  --color-nova-dark: #000000;
+  --color-nova-darker: #020408;
+  --color-nova-cyan: #06b6d4;
+  --color-nova-cyan-hover: #0891b2;
+  --color-nova-cyan-light: #22d3ee;
+  --color-nova-surface: #05070a;
+  --color-nova-border: rgba(22, 78, 99, 0.2);
+  --color-nova-text: #ffffff;
+  --color-nova-text-muted: #64748b;
+}
+
+:root {
+  background-color: var(--color-nova-darker);
+  color: var(--color-nova-text);
+  color-scheme: dark;
+}
+
+body {
+  font-family: var(--font-sans), sans-serif;
+  margin: 0;
+  padding: 0;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
