@@ -8,7 +8,7 @@ const VendorView = dynamic(
     ssr: false,
     loading: () => (
       <div className="flex h-[80vh] items-center justify-center">
-        <Loader2 className="w-8 h-8 animate-spin text-cyan-500" />
+        <Loader2 className="w-8 h-8 animate-spin text-white/50" />
       </div>
     ),
   }

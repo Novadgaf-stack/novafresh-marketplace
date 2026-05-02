@@ -40,10 +40,10 @@ export function ToastProvider({ children }: { children: React.ReactNode }) {
         {toasts.map((toast) => (
           <div
             key={toast.id}
-            className={`px-4 py-3 rounded-lg shadow-lg border backdrop-blur-md font-mono text-xs flex items-center justify-between min-w-[300px] animate-in slide-in-from-bottom-5 ${
-              toast.type === 'success' ? 'bg-emerald-500/10 border-emerald-500/30 text-emerald-400' :
-              toast.type === 'error' ? 'bg-rose-500/10 border-rose-500/30 text-rose-400' :
-              'bg-cyan-500/10 border-cyan-500/30 text-cyan-400'
+            className={`px-4 py-3 rounded-lg shadow-lg border backdrop-blur-md font-sans text-sm flex items-center justify-between min-w-[300px] transition-all duration-300 animate-in slide-in-from-bottom-5 ${
+              toast.type === 'success' ? 'bg-emerald-500/10 border-emerald-500/20 text-emerald-400' :
+              toast.type === 'error' ? 'bg-rose-500/10 border-rose-500/20 text-rose-400' :
+              'bg-white/10 border-white/20 text-white'
             }`}
           >
             <span>{toast.message}</span>

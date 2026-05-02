@@ -13,18 +13,18 @@ export default function GlobalError({
 }) {
   return (
     <html lang="en">
-      <body className={`${inter.className} bg-[#020408] text-slate-300 flex items-center justify-center min-h-screen p-6`}>
-        <div className="max-w-md w-full bg-[#05070a] border border-cyan-900/30 p-8 rounded-2xl text-center shadow-2xl relative overflow-hidden">
-          <div className="absolute top-0 left-0 w-full h-1 bg-rose-500"></div>
-          <h2 className="text-xl font-bold text-white mb-4">CRITICAL SYSTEM FAILURE</h2>
-          <p className="text-sm font-mono text-slate-500 mb-8 whitespace-pre-wrap">
+      <body className={`${inter.className} bg-[#0A0A0A] text-slate-300 flex items-center justify-center min-h-screen p-6`}>
+        <div className="max-w-md w-full bg-white/[0.02] border border-white/10 p-8 rounded-3xl text-center shadow-sm relative overflow-hidden">
+          <div className="absolute top-0 left-0 w-full h-1 bg-white"></div>
+          <h2 className="text-xl font-semibold text-white mb-3">System Failure</h2>
+          <p className="text-sm text-slate-400 mb-8 whitespace-pre-wrap leading-relaxed">
             {error.message || "A fatal error occurred within the application runtime."}
           </p>
           <button
             onClick={() => reset()}
-            className="w-full bg-cyan-500 hover:bg-cyan-400 text-black font-semibold py-3 px-4 rounded-xl transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)] flex items-center justify-center gap-2"
+            className="w-full bg-white hover:bg-slate-200 text-black font-medium py-3 px-4 rounded-full transition-colors flex items-center justify-center gap-2"
           >
-            REINITIALIZE KERNEL
+            Restart Application
           </button>
         </div>
       </body>

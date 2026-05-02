@@ -32,65 +32,63 @@ export function SettingsView() {
     e.preventDefault();
     setIsSubmitting(true);
     
-    // Execute simulated PUT request for persistence
     if (user?.id) {
        await persistUserToDB(user.id, formData.email, formData.name, user.role as string);
     }
-    await new Promise(resolve => setTimeout(resolve, 800));
     
-    addToast('USER_PREFERENCES_SYNCED: System parameters successfully updated.', 'success');
+    addToast('Preferences successfully updated.', 'success');
     setIsSubmitting(false);
   };
 
   return (
-    <div className="p-6 md:p-10 max-w-4xl mx-auto space-y-10 pb-20">
+    <div className="p-4 sm:p-6 md:p-8 lg:p-12 max-w-4xl mx-auto space-y-8 pb-20">
       <div>
-        <h1 className="text-2xl font-bold text-white tracking-tight">System Preferences</h1>
-        <p className="text-slate-500 mt-1">Configure identity, security, and operational settings.</p>
+        <h1 className="text-3xl font-semibold text-white tracking-tight">System Settings</h1>
+        <p className="text-slate-400 mt-2 text-sm">Manage your profile, security, and preferences.</p>
       </div>
 
       <form onSubmit={updateUserPreferences} className="space-y-8">
         
         {/* Profile Management */}
-        <section className="bg-[#05070a] border border-cyan-900/20 rounded-2xl overflow-hidden group">
-          <div className="px-6 py-4 border-b border-cyan-900/10 flex items-center gap-3">
-             <div className="p-2 bg-cyan-500/10 rounded-lg text-cyan-400">
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden group">
+          <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3">
+             <div className="p-2 bg-white/5 rounded-lg text-white">
                <UserIcon className="w-4 h-4" />
              </div>
-             <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-300">Identity Profile</h2>
+             <h2 className="text-sm font-semibold text-white">Identity Profile</h2>
           </div>
-          <div className="p-6 space-y-6 bg-black/20">
+          <div className="p-6 space-y-6">
             <div className="flex items-center gap-6">
-               <div className="w-20 h-20 rounded-full border-2 border-cyan-500/30 bg-black/40 flex items-center justify-center relative cursor-pointer hover:border-cyan-400 transition-colors overflow-hidden group/avatar">
+               <div className="w-20 h-20 rounded-full border border-white/10 bg-black/40 flex items-center justify-center relative cursor-pointer hover:border-white/30 transition-colors overflow-hidden group/avatar">
                  {/* eslint-disable-next-line @next/next/no-img-element */}
-                 <img src="https://picsum.photos/seed/user1/200" alt="Avatar" className="w-full h-full object-cover opacity-60 group-hover/avatar:opacity-30 transition-opacity" />
+                 <img src="https://picsum.photos/seed/user1/200" alt="Avatar" className="w-full h-full object-cover opacity-80 group-hover/avatar:opacity-40 transition-opacity" />
                  <Camera className="w-6 h-6 text-white absolute opacity-0 group-hover/avatar:opacity-100 transition-opacity" />
                </div>
                <div>
-                  <h3 className="text-white font-medium">Clearance Avatar</h3>
-                  <p className="text-xs text-slate-500 mt-1 font-mono">JPG, PNG MAX 2MB</p>
+                  <h3 className="text-white font-medium">Profile Image</h3>
+                  <p className="text-xs text-slate-500 mt-1">JPG or PNG. Max 2MB.</p>
                </div>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[11px] uppercase tracking-widest font-semibold text-slate-400 mb-2">Display Designation</label>
+                <label className="block text-sm font-medium text-slate-400 mb-2">Display Name</label>
                 <input 
                   type="text" 
                   name="name"
                   value={formData.name}
                   onChange={handleInputChange}
-                  className="w-full rounded-xl border border-cyan-900/30 bg-black/40 px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-colors"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 transition-colors"
                 />
               </div>
               <div>
-                <label className="block text-[11px] uppercase tracking-widest font-semibold text-slate-400 mb-2">Comms Address (Email)</label>
+                <label className="block text-sm font-medium text-slate-400 mb-2">Email Address</label>
                 <input 
                   type="email" 
                   name="email"
                   value={formData.email}
                   onChange={handleInputChange}
-                  className="w-full rounded-xl border border-cyan-900/30 bg-black/40 px-4 py-2.5 text-white/50 cursor-not-allowed"
+                  className="w-full rounded-xl border border-white/5 bg-black/40 px-4 py-3 text-sm text-white/50 cursor-not-allowed"
                   disabled
                 />
               </div>
@@ -99,45 +97,45 @@ export function SettingsView() {
         </section>
 
         {/* Security */}
-        <section className="bg-[#05070a] border border-cyan-900/20 rounded-2xl overflow-hidden">
-          <div className="px-6 py-4 border-b border-cyan-900/10 flex items-center gap-3">
-             <div className="p-2 bg-amber-500/10 rounded-lg text-amber-400">
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden">
+          <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3">
+             <div className="p-2 bg-white/5 rounded-lg text-white">
                <Shield className="w-4 h-4" />
              </div>
-             <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-300">Access Security</h2>
+             <h2 className="text-sm font-semibold text-white">Access Security</h2>
           </div>
-          <div className="p-6 space-y-6 bg-black/20">
-            <div className="flex items-center justify-between p-4 rounded-xl border border-cyan-900/20 bg-[#05070a]">
+          <div className="p-6 space-y-6">
+            <div className="flex items-center justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02]">
               <div>
-                <h3 className="text-sm font-medium text-white mb-0.5">Multi-Factor Authentication (MFA)</h3>
-                <p className="text-[11px] text-slate-500">Require an additional cryptographic token upon initialization.</p>
+                <h3 className="text-sm font-medium text-white mb-1">Two-Factor Authentication</h3>
+                <p className="text-sm text-slate-400">Add an extra layer of security to your account.</p>
               </div>
               <label className="relative inline-flex items-center cursor-pointer">
                 <input type="checkbox" name="twoFactorEnabled" checked={formData.twoFactorEnabled} onChange={handleInputChange} className="sr-only peer" />
-                <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-300 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-cyan-500"></div>
+                <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white"></div>
               </label>
             </div>
 
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               <div>
-                <label className="block text-[11px] uppercase tracking-widest font-semibold text-slate-400 mb-2">Current Cipher</label>
+                <label className="block text-sm font-medium text-slate-400 mb-2">Current Password</label>
                 <input 
                   type="password" 
                   name="currentPassword"
                   value={formData.currentPassword}
                   onChange={handleInputChange}
-                  className="w-full rounded-xl border border-cyan-900/30 bg-black/40 px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-colors"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 transition-colors"
                   placeholder="••••••••"
                 />
               </div>
               <div>
-                <label className="block text-[11px] uppercase tracking-widest font-semibold text-slate-400 mb-2">New Cipher</label>
+                <label className="block text-sm font-medium text-slate-400 mb-2">New Password</label>
                 <input 
                   type="password" 
                   name="newPassword"
                   value={formData.newPassword}
                   onChange={handleInputChange}
-                  className="w-full rounded-xl border border-cyan-900/30 bg-black/40 px-4 py-2.5 text-white focus:border-cyan-500 focus:outline-none focus:ring-1 focus:ring-cyan-500 transition-colors"
+                  className="w-full rounded-xl border border-white/10 bg-white/5 px-4 py-3 text-sm text-white focus:border-white/30 focus:outline-none focus:ring-1 focus:ring-white/30 transition-colors"
                   placeholder="••••••••"
                 />
               </div>
@@ -146,31 +144,31 @@ export function SettingsView() {
         </section>
 
         {/* Branding */}
-        <section className="bg-[#05070a] border border-cyan-900/20 rounded-2xl overflow-hidden">
-          <div className="px-6 py-4 border-b border-cyan-900/10 flex items-center gap-3">
-             <div className="p-2 bg-emerald-500/10 rounded-lg text-emerald-400">
+        <section className="bg-white/[0.02] border border-white/5 rounded-2xl overflow-hidden">
+          <div className="px-6 py-4 border-b border-white/5 flex items-center gap-3">
+             <div className="p-2 bg-white/5 rounded-lg text-white">
                <Briefcase className="w-4 h-4" />
              </div>
-             <h2 className="text-sm font-semibold uppercase tracking-widest text-slate-300">Agency Branding</h2>
+             <h2 className="text-sm font-semibold text-white">Preferences</h2>
           </div>
-          <div className="p-6 bg-black/20">
-             <div className="flex items-start justify-between p-4 rounded-xl border border-cyan-900/20 bg-[#05070a]">
+          <div className="p-6">
+             <div className="flex items-start justify-between p-4 rounded-xl border border-white/5 bg-white/[0.02]">
               <div className="flex-1 pr-6">
-                <h3 className="text-sm font-medium text-white mb-2">Prime Assets Compliance Mode</h3>
-                <p className="text-[11px] text-slate-500 leading-relaxed">
-                  Enforces strict visual guidelines in accordance with Prime Assets corporate identity standards. Disabling this may result in unrecognized deployment signatures.
+                <h3 className="text-sm font-medium text-white mb-2">Premium Experience</h3>
+                <p className="text-sm text-slate-400 leading-relaxed">
+                  Enable high-fidelity animations and advanced visual features. May affect performance on older devices.
                 </p>
                 {formData.usePrimeBranding && (
-                  <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-emerald-500/10 border border-emerald-500/20 text-[10px] font-mono text-emerald-400 uppercase">
-                    <span className="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
-                    Branding Synchronized
+                  <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-lg bg-white/10 border border-white/10 text-xs text-white">
+                    <span className="w-1.5 h-1.5 rounded-full bg-white animate-pulse"></span>
+                    Enabled
                   </div>
                 )}
               </div>
               <div className="pt-1">
                 <label className="relative inline-flex items-center cursor-pointer">
                   <input type="checkbox" name="usePrimeBranding" checked={formData.usePrimeBranding} onChange={handleInputChange} className="sr-only peer" />
-                  <div className="w-11 h-6 bg-slate-800 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-slate-300 after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-emerald-500"></div>
+                  <div className="w-11 h-6 bg-white/10 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full peer-checked:after:border-white after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:border-gray-300 after:border after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-white"></div>
                 </label>
               </div>
             </div>
@@ -181,17 +179,17 @@ export function SettingsView() {
           <button 
             type="submit"
             disabled={isSubmitting}
-            className="flex items-center gap-2 px-6 py-2.5 bg-cyan-500 text-black font-semibold rounded-xl hover:bg-cyan-400 transition-colors shadow-[0_0_15px_rgba(6,182,212,0.3)] focus:outline-none focus:ring-2 focus:ring-cyan-500 focus:ring-offset-2 focus:ring-offset-[#020408] disabled:opacity-50 disabled:cursor-not-allowed"
+            className="flex items-center gap-2 px-6 py-3 bg-white text-black text-sm font-medium rounded-full hover:bg-slate-200 transition-colors focus:outline-none focus:ring-2 focus:ring-white focus:ring-offset-2 focus:ring-offset-[#0A0A0A] disabled:opacity-50 disabled:cursor-not-allowed"
           >
             {isSubmitting ? (
               <span className="flex items-center gap-2">
                  <div className="w-4 h-4 border-2 border-black/30 border-t-black rounded-full animate-spin"></div>
-                 SYNCING...
+                 Saving...
               </span>
             ) : (
               <>
                 <Save className="w-4 h-4" />
-                COMMIT CHANGES
+                Save Changes
               </>
             )}
           </button>

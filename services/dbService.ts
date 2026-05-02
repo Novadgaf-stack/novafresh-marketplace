@@ -94,12 +94,10 @@ export async function createAssetInDB(assetData: any) {
 // Synchronization of canonical assets into data layer
 export async function seedAssetsOnce(initialAssets: any[]) {
   const existing = await fetchAllAssetsFromDB();
+  if (existing.length >= initialAssets.length) return;
   // Override match ids to ensure catalog integrity
-  for (const asset of initialAssets) {
-    try {
-       await setDoc(doc(db, 'assets', asset.id), asset, { merge: true });
-    } catch (error) {
-       handleFirestoreError(error, OperationType.CREATE, 'assets');
-    }
-  }
+  const promises = initialAssets.map(asset => 
+    setDoc(doc(db, 'assets', asset.id), asset, { merge: true }).catch(err => console.warn(err))
+  );
+  await Promise.all(promises);
 }
