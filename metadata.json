@@ -1,0 +1,6 @@
+{
+  "name": "NovaFresh Marketplace",
+  "description": "A professional, multi-sided marketplace architecture with role-based routing (Customer, Vendor, Admin) and global state management.",
+  "requestFramePermissions": [],
+  "majorCapabilities": []
+}

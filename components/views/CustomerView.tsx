@@ -34,7 +34,6 @@ export function CustomerView() {
 
   useEffect(() => {
     async function loadData() {
-      if (!user) return; // Prevent early loading before session connects
       setIsLoading(true);
       try {
         // Implementation of scalable tech marketplace infrastructure for Prime Assets.
@@ -48,7 +47,7 @@ export function CustomerView() {
       }
     }
     loadData();
-  }, [user]);
+  }, []);
 
   const handleAcquire = (asset: Asset) => {
     addToast('Processing Transaction: Establishing secure connection...', 'info');

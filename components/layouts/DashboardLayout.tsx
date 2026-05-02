@@ -2,7 +2,6 @@
 
 import React, { useEffect, useState } from 'react';
 import { useUser, UserRole } from '@/context/user-context';
-import { AuthView } from '@/components/views/AuthView';
 import { Loader2, LayoutDashboard, ShoppingBag, Truck, BarChart3, Settings, Menu, X } from 'lucide-react';
 import Link from 'next/link';
 import { usePathname, useRouter } from 'next/navigation';
@@ -41,7 +40,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   }
 
   if (!user) {
-    return <AuthView />;
+    return null; // Fallback
   }
 
   const navLinks = [
