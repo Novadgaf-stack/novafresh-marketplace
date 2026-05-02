@@ -4,7 +4,6 @@ import { getFirestore } from 'firebase/firestore';
 
 let config;
 try {
-  // eslint-disable-next-line @typescript-eslint/no-require-imports
   config = require('../firebase-applet-config.json');
 } catch (e) {
   config = {

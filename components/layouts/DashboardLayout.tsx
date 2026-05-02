@@ -12,21 +12,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
   const router = useRouter();
   const [isSidebarOpen, setIsSidebarOpen] = useState(false);
 
-  // Enforce Role-Based Access Control and strict path redirect routing
-  useEffect(() => {
-    if (!isLoading && user) {
-      if (pathname === '/settings' || pathname === '/success') return;
-      
-      if (user.role === 'customer' && !pathname.startsWith('/marketplace')) {
-        router.push('/marketplace');
-      } else if (user.role === 'vendor' && !pathname.startsWith('/vendor')) {
-        router.push('/vendor/dashboard');
-      } else if (user.role === 'admin' && !pathname.startsWith('/admin')) {
-        router.push('/admin/dashboard');
-      }
-    }
-  }, [user, isLoading, pathname, router]);
-
+  // Role switching handled entirely purely in UI now
   const handleRoleSwitch = (role: UserRole) => {
     switchRole(role);
   };
@@ -45,7 +31,7 @@ export function DashboardLayout({ children }: { children: React.ReactNode }) {
 
   const navLinks = [
     ...(user.role === 'customer' ? [
-      { href: '/marketplace', icon: <ShoppingBag className="w-6 h-6" />, label: 'Marketplace' },
+      { href: '/', icon: <ShoppingBag className="w-6 h-6" />, label: 'Marketplace' },
     ] : []),
     ...(user.role === 'vendor' ? [
       { href: '/vendor/dashboard', icon: <LayoutDashboard className="w-6 h-6" />, label: 'Dashboard' },

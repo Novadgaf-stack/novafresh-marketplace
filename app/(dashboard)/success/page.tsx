@@ -15,7 +15,7 @@ export default function SuccessPage() {
       setCountdown((prev) => {
         if (prev <= 1) {
           clearInterval(timer);
-          router.push('/marketplace');
+          router.push('/');
           return 0;
         }
         return prev - 1;
@@ -53,7 +53,7 @@ export default function SuccessPage() {
          <div className="w-full pt-6 border-t border-cyan-900/30 flex flex-col items-center gap-4">
            <p className="text-xs text-slate-500 font-mono">Redirecting to marketplace in {countdown}s...</p>
            <Link 
-             href="/marketplace"
+             href="/"
              className="flex items-center gap-2 px-6 py-2.5 bg-cyan-500 hover:bg-cyan-400 text-black text-sm font-semibold rounded-xl transition-colors shadow-[0_0_15px_rgba(6,182,212,0.4)]"
            >
              RETURN TO TERMINAL <ArrowRight className="w-4 h-4" />
