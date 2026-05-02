@@ -1,17 +1,24 @@
-NovaFresh Marketplace
-Infrastructure: Prime Assets Architecture
+echo "# 💎 NovaFresh Marketplace
+### Multi-tenant Enterprise Asset Infrastructure
 
-A high-fidelity multi-tenant marketplace for tech assets.
+**NovaFresh** is a high-performance marketplace engine built for the next generation of digital commerce. Engineered with a focus on 'Quiet Luxury' UI and robust multi-tenant security, it serves as a flagship architecture for the **Prime Assets** technical ecosystem.
 
-Frontend: Next.js 15, Tailwind CSS
+---
 
-Security: Firebase Auth & RBAC Dashboards
+### 🏗️ Core Architecture
+* **Frontend:** Next.js 15 (App Router) with React 19 for seamless, edge-ready performance.
+* **Styling:** Tailwind CSS implementing a modern European minimalist design system.
+* **Security:** Layered Firebase Auth with Role-Based Access Control (RBAC) for vendor/buyer isolation.
+* **Database:** Firestore-backed real-time state management for dynamic listings.
 
-Infrastructure: Scalable Prime Assets Architecture
+### ⚡ Key Features
+* **Multi-tenant Dashboards:** Separate, secure interfaces for asset managers and customers.
+* **Glassmorphic UI:** High-fidelity components designed for a premium user experience.
+* **Optimized Performance:** Sub-second page loads powered by Vercel's Edge Network.
 
-Key Improvements Made:
-Professional Branding: The file now highlights the project's core infrastructure as the "Prime Assets Architecture," aligning it with your technical agency's identity.
+---
+*Developed & Maintained by **Prime Assets** | Founder: Inem Philip U.*" > README.md
 
-Technical Stack Transparency: It clearly lists the modern technologies used, such as Next.js 15 and Tailwind CSS, which is essential for professional review.
-
-Privacy & Cleanliness: All AI-specific metadata and technical instruction files (e.g., README_TECHNICAL.md, metadata.json) were purged before this push to ensure the repository looks like a standard professional deployment.
+git add README.md
+git commit -m "style: elevated README to enterprise agency standards"
+git push origin main
