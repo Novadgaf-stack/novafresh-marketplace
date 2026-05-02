@@ -17,7 +17,7 @@
 * **Optimized Performance:** Sub-second page loads powered by Vercel's Edge Network.
 
 ---
-*Developed & Maintained by **Prime Assets** | Founder: Inem Philip U.*" > README.md
+*Developed & Maintained by **Prime Assets** | Founder: Akinkunmi Isaac D.*" > README.md
 
 git add README.md
 git commit -m "style: elevated README to enterprise agency standards"
