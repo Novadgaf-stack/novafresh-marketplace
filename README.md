@@ -1,4 +1,4 @@
-echo "# 💎 NovaFresh Marketplace
+ 💎 NovaFresh Marketplace
 ### Multi-tenant Enterprise Asset Infrastructure
 
 **NovaFresh** is a high-performance marketplace engine built for the next generation of digital commerce. Engineered with a focus on 'Quiet Luxury' UI and robust multi-tenant security, it serves as a flagship architecture for the **Prime Assets** technical ecosystem.
