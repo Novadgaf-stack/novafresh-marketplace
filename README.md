@@ -19,6 +19,4 @@
 ---
 *Developed & Maintained by **Prime Assets** | Founder: Akinkunmi Isaac D.*" > README.md
 
-git add README.md
-git commit -m "style: elevated README to enterprise agency standards"
-git push origin main
+
