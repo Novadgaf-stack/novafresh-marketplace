@@ -1,20 +1,28 @@
-<div align="center">
-<img width="1200" height="475" alt="GHBanner" src="https://github.com/user-attachments/assets/0aa67016-6eaf-458a-adb2-6e31a0763ed6" />
-</div>
 
-# Run and deploy your AI Studio app
+# NovaFresh Marketplace — Premium Commerce Platform
 
-This contains everything you need to run your app locally.
+**NovaFresh Marketplace** is an enterprise-grade digital commerce platform engineered for high-performance transactions, seamless vendor operations, and optimized consumer purchasing flows. Built with an uncompromising focus on fluid responsive scaling, clean visual hierarchy, and robust state management, the platform sets a new standard for modern multi-vendor ecosystems.
 
-View your app in AI Studio: https://ai.studio/apps/1883402b-8bdc-4b91-b274-b88db45e1110
+---
 
-## Run Locally
+## 🏛️ Core Architectural Pillars
 
-**Prerequisites:**  Node.js
+* **Fluid Responsive Presentation:** Developed using strict mobile-first viewport scaling (`min-h-screen`, `w-full`) to guarantee absolute layout consistency across ultra-wide desktop monitors, tablets, and mobile devices without horizontal truncation.
+* **Universal Light/Dark Theming:** Fully integrated with `next-themes` wrapped at the application root layout, providing instant semantic color mapping and smooth state transitions without layout shifts.
+* **Optimized Data Stream Navigation:** Touch-friendly horizontal interaction layers and category carousels complete with automated scrollbar suppression (`scrollbar-none`) to maintain a clean aesthetic.
+* **Asymmetrical Grid Architectures:** Highly dynamic layout matrices that seamlessly adapt product catalogs, vendor dashboards, and active ordering components from complex desktop grids to highly readable mobile vertical stacks.
+* **Production-Safe Backend Integration:** Core infrastructure built around Server-Side Rendering (SSR) safe identity logic designed to interface securely with cloud storage and authorization providers while fully supporting static generation pipelines.
 
+---
 
-1. Install dependencies:
-   `npm install`
-2. Set the `GEMINI_API_KEY` in [.env.local](.env.local) to your Gemini API key
-3. Run the app:
-   `npm run dev`
+## 🚀 Local Development Environment
+
+### Prerequisites
+* **Node.js** (v18.x LTS or higher recommended)
+* **Package Manager** (`npm`, `yarn`, or `pnpm`)
+
+### 1. Repository Setup
+```bash
+git clone [https://github.com/your-username/novafresh-marketplace.git](https://github.com/your-username/novafresh-marketplace.git)
+cd novafresh-marketplace
+npm install
